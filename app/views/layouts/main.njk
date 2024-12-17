@@ -4,3 +4,14 @@
   {{ super() }}
   {% include "partials/styles.njk" %}
 {% endblock %}
+
+{% block content %}
+  {% block content_main %}
+    <div class="govuk-grid-row">
+      {% block start_content_block %}{% endblock %}
+      <div class="govuk-grid-column-two-thirds">
+        {% block content_block %}{% endblock %}
+      </div>
+    </div>
+  {% endblock %}
+{% endblock %}

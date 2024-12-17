@@ -1,0 +1,44 @@
+{% extends "layouts/main.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{% block casaPageTitle %}
+  Details
+{% endblock %}
+
+{% block content_block %}
+    <div>hello</div>
+  {% set legendHtml %}
+        <h1 class="govuk-heading-l">
+          Details
+        </h1>
+    {% endset %}
+
+   <form action="#" method="post" novalidate>
+    <input type="hidden" name="_csrf" value="{{ casa.csrfToken }}"/>
+    <div class="govuk-form-group">
+      {% call govukFieldset({
+        legend: {
+          html: legendHtml,
+          classes: "govuk-fieldset__legend--l"
+        }
+      }) %}
+        <h2 class="govuk-heading-m">
+          Details
+        </h2>
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: rows
+        }) }}
+      {% endcall %}
+    </div>
+
+    <input type="hidden" name="answers-checked" value="true">
+    {{ govukButton({
+      text: 'Save',
+      id: 'f-submitForm'
+    }) }}
+  </form>
+{% endblock %}

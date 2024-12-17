@@ -1,0 +1,30 @@
+{% extends "layouts/journey.njk" %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "casa/components/input/macro.njk" import casaGovukInput with context %}
+
+{% block casaPageTitle %}
+  Surname
+{% endblock %}
+
+{% block journey_form %}
+  <div class="govuk-form-group"> 
+    {% call govukFieldset({
+      legend: {
+        text: "What is your surname?",
+        classes: "govuk-fieldset__legend--l",
+        isPageHeading: true
+      }
+    }) %}
+    
+      {{ casaGovukInput({
+        name: "surname",
+        label: {
+          text: "Surname"
+        },
+        value: formData.surname,
+        casaErrors: formErrors,
+        autocomplete: "off"
+      }) }}
+    {% endcall %}
+  </div>
+{% endblock %}
